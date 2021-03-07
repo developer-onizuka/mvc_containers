@@ -1,0 +1,27 @@
+@model Employee.Models.EmployeeEntity
+
+<h1>Insert Employee</h1>
+
+<h2>@ViewBag.Message</h2>
+
+<form asp-controller="Home" asp-action="Insert" method="post">
+<table border="1" cellpadding="10">
+    <tr>
+        <td>Employee ID :</td>
+        <td><input asp-for="EmployeeID" /></td>
+    </tr>
+    <tr>
+        <td>First Name :</td>
+        <td><input asp-for="FirstName" /></td>
+    </tr>
+    <tr>
+        <td>Last Name :</td>
+        <td><input asp-for="LastName" /></td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <button type="submit">Save</button>
+        </td>
+    </tr>
+</table>
+</form>
