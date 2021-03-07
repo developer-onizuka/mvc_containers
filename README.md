@@ -4,7 +4,7 @@ $ sudo docker pull mongo
 $ dotnet new mvc -o Employee
 $ cd Employee
 $ dotnet add package MongoDB.Driver
-(See also my HomeController.cs)
+(Find also my HomeController.cs in this project.)
 ```
 
 # 1. C# build self-contained
