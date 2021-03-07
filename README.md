@@ -24,3 +24,31 @@ Copyright (C) Microsoft Corporation. All rights reserved.
 $ mkdir -p ~/docker/Employee
 $ cd bin/release/netcoreapp3.1/linux-x64/
 $ tar cvfz ~/docker/Employee/publish.tar.gz publish
+$ cat Dockerfile 
+FROM ubuntu:latest
+RUN mkdir /usr/local/dotnet
+ADD publish.tar.gz /usr/local/dotnet
+ADD dotnet-sdk-3.1.405-linux-x64.tar.gz /usr/local/dotnet
+RUN apt-get update
+RUN apt-get install -y libssl-dev
+
+ENV PATH $PATH:/usr/local/dotnet
+ENV DOTNET_SYSTEM_GLOBALIZATION_INVARIANT=1
+ENV ASPNETCORE_URLS="https://*:5001;http://*:5000"
+
+RUN dotnet dev-certs https --clean
+RUN dotnet dev-certs https
+
+$ ls
+Dockerfile  dotnet-sdk-3.1.405-linux-x64.tar.gz  publish.tar.gz
+
+$ sudo docker build -t employee .
+...
+Successfully built b70eb3858423
+Successfully tagged employee:latest
+
+$ sudo docker images
+REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+employee            latest              b70eb3858423        14 minutes ago      563MB
+ubuntu              latest              bb0eaf4eee00        5 months ago        72.9MB
+```
