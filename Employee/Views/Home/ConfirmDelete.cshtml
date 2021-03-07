@@ -1,0 +1,29 @@
+@model Employee.Models.EmployeeEntity
+
+
+<h2>Do you want to delete this employee?</h2>
+
+<form asp-controller="Home" asp-action="Delete" method="post">
+
+    <input type="hidden" name="Id" value="@Model.Id.ToString()" />
+
+    <table border="1" cellpadding="10">
+        <tr>
+            <td>Employee ID :</td>
+            <td>@Model.EmployeeID</td>
+        </tr>
+        <tr>
+            <td>First Name :</td>
+            <td>@Model.FirstName</td>
+        </tr>
+        <tr>
+            <td>Last Name :</td>
+            <td>@Model.LastName</td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <button type="submit">Delete</button>
+            </td>
+        </tr>
+    </table>
+</form>
