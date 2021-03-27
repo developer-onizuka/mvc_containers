@@ -116,10 +116,27 @@ server {
 }
 
 ```
-
-# 4. Run everything
+# 4. Make persistent volume for Mongodb
 ```
-sudo docker run -itd -p 27017:27017 --rm --name="mongodb" mongo:latest
+$ sudo docker volume create sample_mongo
+sample_mongo
+$ sudo docker inspect sample_mongo
+[
+    {
+        "CreatedAt": "2021-03-27T02:40:52Z",
+        "Driver": "local",
+        "Labels": {},
+        "Mountpoint": "/var/snap/docker/common/var-lib-docker/volumes/sample_mongo/_data",
+        "Name": "sample_mongo",
+        "Options": {},
+        "Scope": "local"
+    }
+]
+```
+
+# 5. Run everything
+```
+sudo docker run -itd -p 27017:27017 --rm --name="mongodb" -v sample_mongo:/data/db mongo:latest
 sudo docker run -itd -p 8080:80 --rm -v nginx_conf:/etc/nginx/conf.d --name="nginx" nginx:latest
 sudo docker run -itd -p 5001:5001 -p 5000:5000 --name="emp0" --rm employee:latest /usr/local/dotnet/publish/Employee
 sudo docker run -itd -p 5011:5001 -p 5010:5000 --name="emp1" --rm employee:latest /usr/local/dotnet/publish/Employee
@@ -145,7 +162,7 @@ a3bc29c772eb        employee:latest     "/usr/local/dotnet/p…"   16 seconds ag
 d704188e6730        mongo:latest        "docker-entrypoint.s…"   4 hours ago         Up 4 hours          0.0.0.0:27017->27017/tcp                         mongodb
 ```
 
-# 5. PC web browser
+# 6. PC web browser
 ```
 If you use the Virtual Box, use the portforwarding so that you can accsess the NGINX's port 8080.
 Type "http://127.0.0.1:8080". You can see the Employee Application through the browser.
