@@ -1,4 +1,4 @@
-# 0. make a certain project and go to the directory and pull mongodb
+# 0. Make a certain project and go to the directory and pull mongodb
 ```
 $ sudo docker pull mongo
 $ dotnet new mvc -o Employee
@@ -54,7 +54,7 @@ employee            latest              b70eb3858423        14 minutes ago      
 ubuntu              latest              bb0eaf4eee00        5 months ago        72.9MB
 ```
 
-# 3. reverse proxy with nginx
+# 3. Reverse proxy with nginx
 ```
 $ sudo docker pull nginx
 Using default tag: latest
