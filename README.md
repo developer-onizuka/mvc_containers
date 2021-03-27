@@ -20,7 +20,7 @@ Copyright (C) Microsoft Corporation. All rights reserved.
   Employee -> /home/xxxxxxxx/dotnet/src/Employee/bin/release/netcoreapp3.1/linux-x64/publish/
 ```
 
-# 2. building container for Docker
+# 2. Building container for Docker
 ```
 $ mkdir -p ~/docker/Employee
 $ cd bin/release/netcoreapp3.1/linux-x64/
@@ -116,7 +116,7 @@ server {
 }
 
 ```
-# 4. Make persistent volume for Mongodb
+# 4. Make a persistent volume for Mongodb
 ```
 $ sudo docker volume create sample_mongo
 sample_mongo
