@@ -20,8 +20,14 @@ namespace Employee.Controllers
 //    		public HomeController()
         	public HomeController(ILogger<HomeController> logger)
    		{
+			var ipaddr = Environment.GetEnvironmentVariable("MONGO");
+			if (String.IsNullOrEmpty(ipaddr)) {
+				ipaddr = "127.0.0.1";
+			}	
 			//MongoClient client = new MongoClient("mongodb://127.0.0.1:27017");
-			MongoClient client = new MongoClient("mongodb://172.17.0.1:27017");
+			//MongoClient client = new MongoClient("mongodb://172.17.0.1:27017");
+			string connectionString = "mongodb://" + ipaddr + ":27017";
+			MongoClient client = new MongoClient(connectionString);
 			IMongoDatabase db = client.GetDatabase("mydb");
 			collection = db.GetCollection<EmployeeEntity>("Employee");
 //			this.collection = db.GetCollection<EmployeeEntity>("Employee");
