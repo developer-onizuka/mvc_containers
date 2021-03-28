@@ -138,14 +138,14 @@ $ sudo docker inspect sample_mongo
 ```
 sudo docker run -itd -p 27017:27017 --rm --name="mongodb" -v sample_mongo:/data/db mongo:latest
 sudo docker run -itd -p 8080:80 --rm -v nginx_conf:/etc/nginx/conf.d --name="nginx" nginx:latest
-sudo docker run -itd -p 5001:5001 -p 5000:5000 --name="emp0" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5011:5001 -p 5010:5000 --name="emp1" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5021:5001 -p 5020:5000 --name="emp2" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5031:5001 -p 5030:5000 --name="emp3" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5041:5001 -p 5040:5000 --name="emp4" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5051:5001 -p 5050:5000 --name="emp5" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5061:5001 -p 5060:5000 --name="emp6" --rm employee:latest /usr/local/dotnet/publish/Employee
-sudo docker run -itd -p 5071:5001 -p 5070:5000 --name="emp7" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5001:5001 -p 5000:5000 --env MONGO="172.17.0.1" --name="emp0" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5011:5001 -p 5010:5000 --env MONGO="172.17.0.1" --name="emp1" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5021:5001 -p 5020:5000 --env MONGO="172.17.0.1" --name="emp2" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5031:5001 -p 5030:5000 --env MONGO="172.17.0.1" --name="emp3" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5041:5001 -p 5040:5000 --env MONGO="172.17.0.1" --name="emp4" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5051:5001 -p 5050:5000 --env MONGO="172.17.0.1" --name="emp5" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5061:5001 -p 5060:5000 --env MONGO="172.17.0.1" --name="emp6" --rm employee:latest /usr/local/dotnet/publish/Employee
+sudo docker run -itd -p 5071:5001 -p 5070:5000 --env MONGO="172.17.0.1" --name="emp7" --rm employee:latest /usr/local/dotnet/publish/Employee
 ```
 ```
 $ sudo docker ps -a
